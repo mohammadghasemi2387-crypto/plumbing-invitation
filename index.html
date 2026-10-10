@@ -3,82 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سمینار تخصصی تاسیسات - پورارجمند</title>
+    <title>سمینار هوشمند تاسیسات - پورارجمند</title>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-Variable-font-face.css" rel="stylesheet">
     <style>
-        body { margin: 0; font-family: 'Vazirmatn', sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; overflow-x: hidden; }
+        :root { --neon: #00d4ff; --dark: #090e1a; --glass: rgba(255, 255, 255, 0.05); }
+        body { margin: 0; font-family: 'Vazirmatn', sans-serif; background: var(--dark); color: #fff; overflow-x: hidden; background-image: radial-gradient(circle at 2px 2px, #1e293b 1px, transparent 0); background-size: 40px 40px; }
         
-        /* افکت نویز صنعتی */
-        .grain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.05; pointer-events: none; background-image: url('https://grainy-gradients.vercel.app/noise.svg'); }
+        /* افکت اسکنر */
+        .scanner { position: fixed; top: 0; left: 0; width: 100%; height: 2px; background: var(--neon); box-shadow: 0 0 20px var(--neon); animation: scan 6s linear infinite; z-index: 100; pointer-events: none; }
 
-        .hero { background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1581092160607-ee2252250c60?q=80&w=2070'); background-size: cover; height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-bottom: 3px solid #00d4ff; position: relative; overflow: hidden; }
+        .hero { height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(9, 14, 26, 0.8), var(--dark)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2000'); background-size: cover; border-bottom: 2px solid var(--neon); }
         
-        /* افکت اسکنر هدر */
-        .hero::after { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: #00d4ff; animation: scan 4s linear infinite; box-shadow: 0 0 10px #00d4ff; }
+        .container { max-width: 800px; margin: -50px auto 40px; padding: 20px; }
         
-        section { padding: 40px 20px; max-width: 800px; margin: auto; animation: fadeInUp 1s ease forwards; }
+        .card { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; margin-bottom: 25px; transition: 0.4s; }
+        .card:hover { transform: scale(1.02); border: 1px solid var(--neon); box-shadow: 0 0 30px rgba(0, 212, 255, 0.2); }
         
-        .card { background: #1e293b; padding: 30px; border-radius: 15px; margin-bottom: 20px; border-left: 5px solid #00d4ff; transition: all 0.3s ease; }
-        .card:hover { transform: translateY(-5px); border-left: 5px solid #ff9f43; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-
-        h1, h2 { color: #00d4ff; margin: 10px 0; }
-        .timer { font-size: 2rem; font-weight: bold; color: #00d4ff; text-align: center; margin: 10px 0; }
+        .pipe-img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; border: 2px solid #334155; }
         
-        /* نوار پیشرفت ظرفیت */
-        .progress-box { background: #0f172a; height: 20px; border-radius: 10px; margin: 15px 0; overflow: hidden; border: 1px solid #334155; }
-        .progress-bar { width: 70%; height: 100%; background: linear-gradient(90deg, #00d4ff, #0077ff); }
-
-        input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 5px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box; }
-        .btn { background: #00d4ff; color: #000; padding: 15px; border-radius: 5px; border: none; cursor: pointer; font-weight: bold; width: 100%; font-size: 1rem; transition: 0.3s; }
-        .btn:hover { background: #fff; }
-
-        .spin { display: inline-block; animation: rotation 5s infinite linear; }
-        @keyframes rotation { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .btn { background: var(--neon); color: #000; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: 800; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; }
+        
+        input { background: #090e1a; border: 1px solid #334155; color: white; padding: 15px; width: 100%; margin: 10px 0; border-radius: 8px; box-sizing: border-box; }
+        
+        h1, h2 { color: var(--neon); text-shadow: 0 0 10px rgba(0,212,255,0.5); }
+        
         @keyframes scan { from { top: 0; } to { top: 100%; } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
-<div class="grain"></div>
+<div class="scanner"></div>
+
 <div class="hero">
-    <h1><span class="spin">⚙️</span> سمینار تاسیسات هوشمند <span class="spin">🔧</span></h1>
-    <p>دعوتنامه ویژه استاد پورارجمند</p>
+    <h1>سیستم‌های تاسیساتی هوشمند</h1>
+    <p>سمینار تخصصی با حضور استاد پورارجمند</p>
 </div>
-<section>
+
+<div class="container">
     <div class="card">
-        <h2>زمان باقی‌مانده <span class="spin">⏳</span></h2>
-        <div id="timer" class="timer">--:--:--</div>
-    </div>
-    
-    <!-- بخش سخنران -->
-    <div class="card" style="text-align: center;">
-        <h2 style="color: #ff9f43;">👤 سخنران ویژه</h2>
-        <p><strong>استاد پورارجمند</strong></p>
-        <p style="font-size: 0.9rem; opacity: 0.8;">متخصص بهینه‌سازی سیستم‌های تاسیساتی و هوش مصنوعی در پروژه‌های عمرانی</p>
+        <h2>وضعیت سنسورها: در انتظار شروع</h2>
+        <div id="timer" style="font-family: monospace; font-size: 2.5rem; color: var(--neon);">--:--:--</div>
     </div>
 
     <div class="card">
-        <h2>وضعیت ظرفیت</h2>
-        <div class="progress-box"><div class="progress-bar"></div></div>
-        <p>ظرفیت پر شده: ۷۰٪ (۱۴۲ از ۲۰۰ نفر)</p>
+        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a268e?q=80&w=800" class="pipe-img" alt="اتصالات صنعتی">
+        <h2>تحلیل اتصالات پیشرفته</h2>
+        <p>در این بخش، ما به بررسی لوله‌های پلیمری با سنسورهای یکپارچه AI می‌پردازیم. مدیریت هوشمند فشار و جریان.</p>
     </div>
 
     <div class="card">
-        <h2>فرم ثبت‌نام</h2>
-        <input type="text" placeholder="نام و نام خانوادگی">
-        <input type="tel" placeholder="شماره تلفن">
-        <button class="btn" onclick="alert('ثبت‌نام با موفقیت انجام شد')">تایید و ثبت نهایی</button>
+        <h2>ثبت‌نام در شبکه</h2>
+        <input type="text" placeholder="نام مهندس">
+        <input type="text" placeholder="کد شناسه شغلی">
+        <button class="btn" onclick="alert('داده‌ها در سیستم ثبت شد.')">اتصال به سمینار</button>
     </div>
-</section>
+</div>
+
 <script>
-    const countDownDate = new Date("Oct 17, 2026 16:00:00").getTime();
-    setInterval(function() {
+    const target = new Date("Oct 17, 2026 16:00:00").getTime();
+    setInterval(() => {
         const now = new Date().getTime();
-        const distance = countDownDate - now;
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        document.getElementById("timer").innerHTML = days + " روز " + hours + " ساعت " + minutes + " دقیقه";
+        const dist = target - now;
+        const d = Math.floor(dist / (1000 * 60 * 60 * 24));
+        const h = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById("timer").innerHTML = `${d}d ${h}h ${m}m`;
     }, 1000);
 </script>
 </body>
