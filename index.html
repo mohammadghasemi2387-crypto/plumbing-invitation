@@ -3,48 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نئورال-تاسیسات | پنل مدیریت هوشمند</title>
+    <title>پنل مانیتورینگ هوشمند تاسیسات | ساختمان هوشمند</title>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-Variable-font-face.css" rel="stylesheet">
     <style>
-        :root { --neon: #00d4ff; --warn: #ff9f43; --danger: #ff4757; --dark: #090e1a; --glass: rgba(255, 255, 255, 0.03); }
+        :root { --neon: #00d4ff; --warn: #ff9f43; --danger: #ff4757; --dark: #0b121e; --glass: rgba(255, 255, 255, 0.04); }
         body { margin: 0; font-family: 'Vazirmatn', sans-serif; background: var(--dark); color: #e2e8f0; overflow-x: hidden; background-image: radial-gradient(circle at 2px 2px, #1e293b 1px, transparent 0); background-size: 40px 40px; }
         
-        /* انیمیشن‌های پیشرفته */
         @keyframes scan { from { top: 0; } to { top: 100%; } }
         @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
-        @keyframes glitch { 0% { transform: translate(0); } 20% { transform: translate(-2px, 2px); } 40% { transform: translate(-2px, -2px); } 60% { transform: translate(2px, 2px); } 80% { transform: translate(2px, -2px); } 100% { transform: translate(0); } }
 
-        .scanner { position: fixed; top: 0; left: 0; width: 100%; height: 2px; background: var(--neon); box-shadow: 0 0 20px var(--neon); animation: scan 4s linear infinite; z-index: 100; pointer-events: none; }
+        .scanner { position: fixed; top: 0; left: 0; width: 100%; height: 2px; background: var(--neon); box-shadow: 0 0 20px var(--neon); animation: scan 5s linear infinite; z-index: 100; pointer-events: none; }
         
-        .hero { height: 55vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(9, 14, 26, 0.85), var(--dark)), url('https://images.unsplash.com/photo-1581092160607-ee2252250c60?q=80&w=2000'); background-size: cover; border-bottom: 2px solid var(--neon); }
+        .hero { height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(9, 14, 26, 0.85), var(--dark)), url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070'); background-size: cover; border-bottom: 3px solid var(--neon); }
         
-        .container { max-width: 1000px; margin: -60px auto 40px; padding: 20px; position: relative; z-index: 10; }
+        .container { max-width: 1000px; margin: -50px auto 40px; padding: 20px; position: relative; z-index: 10; }
         
-        .card { background: var(--glass); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); padding: 25px; border-radius: 15px; margin-bottom: 25px; transition: 0.3s; }
+        .card { background: var(--glass); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); padding: 25px; border-radius: 15px; margin-bottom: 25px; transition: 0.3s; }
         .card:hover { border-color: var(--neon); transform: translateY(-5px); }
         
-        /* بخش‌های جدید */
-        .grid-dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .grid-dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
         .stat-box { background: rgba(0, 0, 0, 0.3); padding: 15px; border-radius: 10px; border-right: 4px solid var(--neon); }
-        .stat-value { font-size: 1.5rem; font-weight: bold; color: var(--neon); display: block; }
+        .stat-value { font-size: 1.6rem; font-weight: bold; color: var(--neon); display: block; }
         
-        .timeline-container { position: relative; padding: 20px 0; }
-        .timeline-item { padding: 15px; border-right: 2px solid var(--neon); margin-right: 20px; position: relative; background: rgba(255,255,255,0.02); margin-bottom: 10px; }
-        .timeline-item::before { content: ""; position: absolute; right: -7px; top: 20px; width: 12px; height: 12px; background: var(--neon); border-radius: 50%; }
+        .timeline-container { position: relative; padding: 10px 0; }
+        .timeline-item { padding: 15px; border-right: 2px solid var(--neon); margin-right: 20px; position: relative; background: rgba(255,255,255,0.02); margin-bottom: 15px; border-radius: 0 10px 10px 0; }
+        .timeline-item::before { content: ""; position: absolute; right: -7px; top: 22px; width: 12px; height: 12px; background: var(--neon); border-radius: 50%; box-shadow: 0 0 10px var(--neon); }
 
         .speaker-profile { display: flex; align-items: center; gap: 20px; }
-        .speaker-img { width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--neon); object-fit: cover; }
-
-        .log-terminal { background: #000; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 0.85rem; color: #00ff00; height: 120px; overflow-y: auto; border: 1px solid #334155; }
+        .speaker-img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--neon); object-fit: cover; }
         
-        .progress-container { height: 10px; background: #1e293b; border-radius: 5px; margin: 15px 0; overflow: hidden; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--neon), #0077ff); width: 75%; animation: pulse 2s infinite; }
+        .log-terminal { background: #05080f; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 0.85rem; color: #4ade80; height: 130px; overflow-y: auto; border: 1px solid #1e293b; line-height: 1.8; }
+        
+        .progress-container { height: 12px; background: #1e293b; border-radius: 6px; margin: 15px 0; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #00d4ff, #0077ff); width: 65%; box-shadow: 0 0 10px var(--neon); }
 
-        input { background: rgba(0,0,0,0.5); border: 1px solid #334155; color: white; padding: 15px; width: 100%; border-radius: 8px; margin: 10px 0; box-sizing: border-box; }
-        .btn { background: var(--neon); color: #000; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: 800; cursor: pointer; transition: 0.3s; }
-        .btn:hover { filter: brightness(1.2); box-shadow: 0 0 15px var(--neon); }
+        input { background: rgba(0,0,0,0.4); border: 1px solid #334155; color: white; padding: 14px; width: 100%; border-radius: 8px; margin: 10px 0; box-sizing: border-box; }
+        .btn { background: var(--neon); color: #000; border: none; padding: 16px; width: 100%; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 1rem; }
+        .btn:hover { background: #fff; box-shadow: 0 0 20px var(--neon); }
 
-        footer { text-align: center; padding: 40px; font-size: 0.8rem; opacity: 0.5; border-top: 1px solid #334155; }
+        footer { text-align: center; padding: 50px; font-size: 0.85rem; opacity: 0.4; border-top: 1px solid #1e293b; }
     </style>
 </head>
 <body>
@@ -52,21 +49,25 @@
 <div class="scanner"></div>
 
 <div class="hero">
-    <h1 style="letter-spacing: 4px;">NEURAL-SYSTEMS v4.0</h1>
-    <p style="opacity: 0.8;">کنترل مرکزی سمینار هوشمند تاسیسات | مدیریت مهندسی</p>
+    <h1 style="margin-bottom: 5px;">سیستم مدیریت هوشمند تأسیسات</h1>
+    <p style="opacity: 0.8; letter-spacing: 1px;">سمینار تخصصی کنترل مرکزی ساختمان (BMS)</p>
 </div>
 
 <div class="container">
     
-    <!-- داشبورد وضعیت کلی -->
+    <!-- آمار لحظه‌ای تأسیسات -->
     <div class="grid-dashboard">
         <div class="card stat-box">
             <span class="stat-value" id="timer">--:--:--</span>
-            <span>زمان باقی‌مانده تا فعالسازی</span>
+            <span style="font-size: 0.8rem; opacity: 0.7;">زمان باقی‌مانده تا شروع سمینار</span>
         </div>
         <div class="card stat-box" style="border-color: var(--warn);">
-            <span class="stat-value">۷۵٪</span>
-            <span>ظرفیت اشغال شده</span>
+            <span class="stat-value">68%</span>
+            <span style="font-size: 0.8rem; opacity: 0.7;">فشار ثابت در شبکه آب (Bar)</span>
+        </div>
+        <div class="card stat-box" style="border-color: #00ff00;">
+            <span class="stat-value">24°C</span>
+            <span style="font-size: 0.8rem; opacity: 0.7;">دمای دمنده چیلر مرکزی</span>
         </div>
     </div>
 
@@ -75,99 +76,68 @@
         <div class="speaker-profile">
             <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200" class="speaker-img" alt="Speaker">
             <div>
-                <h2>استاد پورارجمند</h2>
-                <p style="margin:0; opacity: 0.7;">مدیر سیستم‌های هوشمند و متخصص اتوماسیون</p>
+                <h2 style="margin:0;">استاد پورارجمند</h2>
+                <p style="margin:5px 0 0; opacity: 0.7;">متخصص سیستم‌های مدیریت ساختمان (BMS) و اتوماسیون صنعتی</p>
             </div>
         </div>
     </div>
 
-    <!-- بخش مشخصات فنی -->
+    <!-- مشخصات فنی سمینار -->
     <div class="card">
-        <h2>پارامترهای عملیاتی (Live Data)</h2>
+        <h2 style="font-size: 1.2rem;">پارامترهای فنی مورد بحث</h2>
         <div class="progress-container"><div class="progress-fill"></div></div>
-        <div class="grid-dashboard" style="grid-template-columns: 1fr 1fr 1fr;">
-            <div class="stat-box" style="border:none; background:transparent;">
-                <small>فشار سیستم</small><br><strong style="color:var(--neon)">12.4 Bar</strong>
+        <div class="grid-dashboard" style="grid-template-columns: 1fr 1fr;">
+            <div class="stat-box" style="border:none; background: rgba(255,255,255,0.02);">
+                <small>کنترل شیرهای برقی</small><br><strong>Active Mode</strong>
             </div>
-            <div class="stat-box" style="border:none; background:transparent;">
-                <small>دمای هسته</small><br><strong style="color:var(--warn)">42°C</strong>
-            </div>
-            <div class="stat-box" style="border:none; background:transparent;">
-                <small>وضعیت شبکه</small><br><strong style="color:#00ff00">ONLINE</strong>
+            <div class="stat-box" style="border:none; background: rgba(255,255,255,0.02);">
+                <small>جریان هوای تهویه</small><br><strong>Stable</strong>
             </div>
         </div>
     </div>
 
-    <!-- بخش برنامه زمانی -->
+    <!-- برنامه زمانی -->
     <div class="card">
-        <h2>پروتکل اجرای برنامه</h2>
+        <h2 style="font-size: 1.2rem;">پروتکل اجرایی سمینار</h2>
         <div class="timeline-container">
             <div class="timeline-item">
-                <strong>فاز ۱:</strong> آنالیز زیرساخت و داده‌های اولیه
+                <strong>پایه ۱:</strong> بررسی سنسورهای فشار و دمای محیط
             </div>
             <div class="timeline-item">
-                <strong>فاز ۲:</strong> پیاده‌سازی پروتکل‌های هوشمند
+                <strong>پایه ۲:</strong> کنترل هوشمند چیلر و پمپ‌های سیرکولاسیون
             </div>
             <div class="timeline-item">
-                <strong>فاز ۳:</strong> بررسی خطاهای احتمالی و بهینه‌سازی
+                <strong>پایه ۳:</strong> مدیریت مصرف انرژی در ساختمان‌های بزرگ
             </div>
         </div>
     </div>
 
-    <!-- بخش ترمینال سیستم -->
+    <!-- کنسول لاگ سیستم -->
     <div class="card">
-        <h2>کنسول سیستم (System Logs)</h2>
+        <h2 style="font-size: 1.2rem;">مانیتورینگ زنده سیستم (Live Feed)</h2>
         <div class="log-terminal" id="log-box">
-            > SYSTEM READY...<br>
-            > LOADING NEURAL MODULES...<br>
-            > CONNECTING TO SERVER...<br>
-            > STATUS: ENCRYPTED CONNECTION ESTABLISHED.<br>
-            > WAITING FOR USER INPUT...
+            > Initializing BMS Protocol...<br>
+            > Checking Water Pressure Sensors... OK<br>
+            > Checking Chiller Temperature... OK<br>
+            > Connecting to Instructor Node... OK<br>
+            > System Status: READY FOR SEMINAR
         </div>
     </div>
 
     <!-- فرم ثبت‌نام -->
     <div class="card">
-        <h2>ثبت‌نام در شبکه مرکزی</h2>
-        <p style="font-size: 0.8rem; opacity: 0.6;">لطفاً اطلاعات خود را برای ورود به پروتکل امنیتی وارد کنید.</p>
-        <input type="text" placeholder="نام مهندس / کد شناسایی">
-        <input type="email" placeholder="آدرس ایمیل امن">
-        <button class="btn">تایید و ثبت در پایگاه داده</button>
+        <h2 style="text-align: center;">ثبت‌نام در شبکه هوشمند</h2>
+        <input type="text" placeholder="نام و نام خانوادگی مهندس">
+        <input type="text" placeholder="کد ملی یا شماره پروانه صنفی">
+        <button class="btn">تأیید و اتصال به سامانه</button>
     </div>
 
 </div>
 
 <footer>
-    &copy; 2026 NEURAL SYSTEMS | ALL RIGHTS RESERVED | PRO-ENGINEERING UNIT
+    برنامه‌ریزی شده توسط واحد مهندسی | نسخه ۴.۰.۲ | تمامی حقوق محفوظ است
 </footer>
 
 <script>
     // تایمر معکوس
-    const target = new Date("Oct 17, 2026 16:00:00").getTime();
-    setInterval(() => {
-        const dist = target - new Date().getTime();
-        const d = Math.floor(dist / (1000 * 60 * 60 * 24));
-        const h = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((dist % (1000 * 60)) / 1000);
-        document.getElementById("timer").innerHTML = `${d}d : ${h}h : ${m}m : ${s}s`;
-    }, 1000);
-
-    // شبیه‌سازی لاگ‌های سیستم (برای جذابیت بیشتر)
-    const logs = [
-        "> Syncing with central server...",
-        "> Data packet received.",
-        "> Optimizing connection...",
-        "> AI Core temperature stable.",
-        "> Monitoring incoming requests..."
-    ];
-    let i = 0;
-    setInterval(() => {
-        const logBox = document.getElementById('log-box');
-        logBox.innerHTML += `<br>> ${logs[i % logs.length]}`;
-        logBox.scrollTop = logBox.scrollHeight;
-        i++;
-    }, 4000);
-</script>
-</body>
-</html>
+    const target = new Date("Oct 17, 2026 16:00:
